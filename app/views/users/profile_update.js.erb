@@ -1,0 +1,11 @@
+var users = document.querySelector("#message");
+<% if @profile_update.errors.any? %>
+<% 
+binding.pry
+ %>
+    users.innerHTML = "Please Enter Email."
+    users.style.color = "red"
+    <% else %>
+         users.innerHTML = "Email Update successfully"
+         users.style.color = "green"
+<% end %>
