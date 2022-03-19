@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   post "/profile", to: "users#profile_update"
   get "/password/:id", to: "users#password"
   post "/chnage_password", to: "users#changes_password"
+  
 end
