@@ -1,16 +1,31 @@
 <div id="<%= dom_id product %>">
-  <p>
-    <strong>Name:</strong>
-    <%= product.name %>
-  </p>
+    <p>
+        <strong>Name:</strong>
+        <%= product.name %>
+    </p>
 
-  <p>
-    <strong>Product image:</strong>
-    <% if product.product_image.image? %>
-       <%= image_tag(product.product_image, size: "100x100") %>
-    <% else %>
-    <%= link_to product.product_image_blob.filename, rails_blob_path(product.product_image, disposition: "attachment") %>
-    <% end %>
-  </p>
+    <p>
+        <strong>Product image:</strong>
+        <% if product.product_image.image? %>
+            <%= image_tag(product.product_image, size: "100x100") %>
+        <% else %>
+            <%= link_to product.product_image_blob.filename, rails_blob_path(product.product_image, disposition: "attachment") %>
+        <% end %>
+    </p>
 
-</div>
+    <p>
+        <% if product.images.attached? %>
+            <% product.images.each do |attachment| %>
+                <% if attachment.image? %>
+                    <%= image_tag attachment, size: "100x100" %>
+                <% else %>
+                    <%= link_to attachment.filename, rails_blob_path(attachment)  %>
+                    <br>
+                        <br>
+                        <% end %>
+                    <% end %>
+                <% end %>
+            </p>
+
+        </div>
+    </p>
