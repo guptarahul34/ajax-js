@@ -1,73 +1,75 @@
-<h1 class="text-center m-4"> Alter Your Profile </h1>
-<p id="message" ></p>
+<h1 class="text-center m-4">
+    Alter Your Profile
+</h1>
+<p id="message"></p>
 
 
+<%= form_with(url: profile_path, model: @profile , method: :post, local: false, id:"profile_edit") do |form| %>
 
-<%= form_with(url: "/profile", model: @profile , method: :post, local: false) do |form| %>  
+    <%= form.hidden_field :id %>
+    <div class="row justify-content-center mt-3">
+        <div class="col-lg-3">
+            <div class="form-group">
+                <%= form.label :email, style: "display: block" %>
+                <%= form.text_field :email, class:"form-control" %>
+            </div>
+        </div>
+    </div>
 
-       <%= form.hidden_field :id %> 
-     <div class="row justify-content-center mt-3">
-          <div class="col-lg-3">
-                 <div class="form-group">
-                    <%= form.label :email, style: "display: block" %>
-                    <%= form.text_field :email, class:"form-control" %>
-                 </div>
-          </div>
-     </div>
+    <div class="row justify-content-center mt-3" style="display:none;margin-left: 500px;" id="password_show">
+        <div class="col-lg-5">
+            <div class="form-group">
+                <%= form.label :password_match,"Enter Your Password", style: "display: block" %>
+                <%= form.password_field :password_match, class:"form-control" %>
+            </div>
+        </div>
+    </div>
 
-     <div class="row justify-content-center mt-3" style="display:none;margin-left: 500px;" id="password_show">
-          <div class="col-lg-5">
-                 <div class="form-group">
-                    <%= form.label :password_match,"Enter Your Password", style: "display: block" %>
-                    <%= form.password_field :password_match, class:"form-control" %>
-                 </div>
-          </div>
-     </div>
-
-      <div class="row justify-content-center mt-3" style="margin-left: 200px;" >
-          <div class="col-lg-5">
-                 <div class="form-group">
-                     Subcription <%= form.check_box :subcription_email %>
-                 </div>
-          </div>
-     </div>
+    <div class="row justify-content-center mt-3" style="margin-left: 200px;">
+        <div class="col-lg-5">
+            <div class="form-group">
+                Subcription
+                <%= form.check_box :subcription_email %>
+            </div>
+        </div>
+    </div>
 
     <div class="row justify-content-center mt-3" style="display:none;margin-left: 500px;" id="subscription_email">
-          <div class="col-lg-5">
-                 <div class="form-group">
-                    <%= form.label :subscription_email_update,"Enter Your Subscription Email", style: "display: block" %>
-                    <%= form.email_field :subscription_email_update, class:"form-control" %>
-                 </div>
-          </div>
-     </div>
-
-     <div class="row justify-content-center mt-2">
-        <div class="col-lg-3">
-                <%= form.submit "Change Email", class:"btn btn-success", data: { disable_with: "saving..." } %>
+        <div class="col-lg-5">
+            <div class="form-group">
+                <%= form.label :subscription_email_update,"Enter Your Subscription Email", style: "display: block" %>
+                <%= form.email_field :subscription_email_update, class:"form-control" %>
+            </div>
         </div>
-     </div>
+    </div>
+
+    <div class="row justify-content-center mt-2">
+        <div class="col-lg-3">
+            <%= form.submit "Change Email", class:"btn btn-success", data: { disable_with: "saving..." } %>
+        </div>
+    </div>
 
 <% end %>
 
-
+<div id="test_ajax"></div>
 
 <script type="text/javascript">
- window.addEventListener("load", () => {
+    window.addEventListener("load", () => {
 
-    let email = document.getElementById("user_email");
-    email.addEventListener("keyup",() => {
-        let user_password = document.getElementById("password_show");
-        user_password.style.display = "block"
+        let email = document.getElementById("user_email");
+        email.addEventListener("keyup", () => {
+            let user_password = document.getElementById("password_show");
+            user_password.style.display = "block"
         });
-    let user_subcription_email = document.getElementById("user_subcription_email");
-     user_subcription_email.addEventListener("click",() => {
-      if(user_subcription_email.checked){
-          document.getElementById("subscription_email").style.display = "block"
-      }else{
-           document.getElementById("subscription_email").style.display = "none"
-      }
-    })
+        let user_subcription_email = document.getElementById("user_subcription_email");
+        user_subcription_email.addEventListener("click", () => {
+            if (user_subcription_email.checked) {
+                document.getElementById("subscription_email").style.display = "block"
+            } else {
+                document.getElementById("subscription_email").style.display = "none"
+            }
+        })
 
-});
 
+    });
 </script>

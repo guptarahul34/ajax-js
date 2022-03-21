@@ -65,7 +65,7 @@ class UsersController < ApplicationController
 
       if params[:user][:subscription_email_update].present?
         if @profile_update.update(subscription_email:params[:user][:subscription_email_update])
-          @profile_update.update(subscription_email:params[:user][:subscription_email_update])
+          # @profile_update.update(subscription_email:params[:user][:subscription_email_update])
          
           respond_to do |format|
             format.js 

@@ -7,6 +7,6 @@ Rails.application.routes.draw do
   get "/profile/:id", to: "users#profile"
   post "/profile", to: "users#profile_update"
   get "/password/:id", to: "users#password"
-  post "/chnage_password", to: "users#changes_password"
+  post "/change_password", to: "users#changes_password"
   
 end
