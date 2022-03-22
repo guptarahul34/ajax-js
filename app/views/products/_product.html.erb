@@ -18,14 +18,19 @@
             <% product.images.each do |attachment| %>
                 <% if attachment.image? %>
                     <%= image_tag attachment, size: "100x100" %>
-                <% else %>
-                    <%= link_to attachment.filename, rails_blob_path(attachment)  %>
-                    <br>
+                    <% elsif attachment.video? %>
+                    <video width="320" height="240" controls>
+                        <source src="<%= rails_blob_path(attachment) %>" type="video/mp4"></video>
                         <br>
+                            <br>
+                            <% else %>
+                                <%= link_to attachment.filename, rails_blob_path(attachment)  %>
+                                <br>
+                                    <br>
+                                    <% end %>
+                                <% end %>
                         <% end %>
-                    <% end %>
-                <% end %>
-            </p>
+                    </p>
 
-        </div>
-    </p>
+                </div>
+            </p>

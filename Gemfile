@@ -75,3 +75,7 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+
+# image validator gem
+
+gem 'active_storage_validations', '~> 0.9.7'
