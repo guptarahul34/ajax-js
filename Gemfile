@@ -79,3 +79,4 @@ end
 # image validator gem
 
 gem 'active_storage_validations', '~> 0.9.7'
+gem 'cancancan'
